@@ -29,7 +29,7 @@ $ rails db:seed
 
 --------------------------------------
 
-BY THE AMAZING GROUP OF "THE ISLAND"
+### By the amazing group "THE ISLAND"
 * Gwendoline
 * Nancy
 * Joanne
