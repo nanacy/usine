@@ -1,0 +1,1211 @@
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (35.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (11.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAssemblages (20180726145843)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "assemblages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180726145843_create_assemblages.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180726145843"]]
+  ↳ bin/rails:9
+  [1m[35m (17.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-07-26 15:01:16.758625"], ["updated_at", "2018-07-26 15:01:16.758625"]]
+  ↳ bin/rails:9
+  [1m[35m (11.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreatePieces (20180726150229)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20180726150229_create_pieces.rb:3
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "pieces" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "part_number" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180726150229_create_pieces.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180726150229"]]
+  ↳ bin/rails:9
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateJoinTableAssemblagesPieces (20180726151838)
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20180726151838_create_join_table_assemblages_pieces.rb:3
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "assemblages_pieces" ("assemblage_id" integer NOT NULL, "piece_id" integer NOT NULL)[0m
+  ↳ db/migrate/20180726151838_create_join_table_assemblages_pieces.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_assemblages_pieces_on_assemblage_id_and_piece_id" ON "assemblages_pieces" ("assemblage_id", "piece_id")[0m
+  ↳ db/migrate/20180726151838_create_join_table_assemblages_pieces.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_assemblages_pieces_on_piece_id_and_assemblage_id" ON "assemblages_pieces" ("piece_id", "assemblage_id")[0m
+  ↳ db/migrate/20180726151838_create_join_table_assemblages_pieces.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180726151838"]]
+  ↳ bin/rails:9
+  [1m[35m (11.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.9ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "azure"], ["created_at", "2018-07-26 15:30:05.403318"], ["updated_at", "2018-07-26 15:30:05.403318"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (23.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.7ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "silver"], ["created_at", "2018-07-26 15:30:05.433417"], ["updated_at", "2018-07-26 15:30:05.433417"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.7ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "gold"], ["created_at", "2018-07-26 15:30:05.444896"], ["updated_at", "2018-07-26 15:30:05.444896"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.7ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "salmon"], ["created_at", "2018-07-26 15:30:05.456759"], ["updated_at", "2018-07-26 15:30:05.456759"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.8ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "blue"], ["created_at", "2018-07-26 15:30:05.471127"], ["updated_at", "2018-07-26 15:30:05.471127"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.8ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "azure"], ["created_at", "2018-07-26 15:30:05.482372"], ["updated_at", "2018-07-26 15:30:05.482372"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.8ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "silver"], ["created_at", "2018-07-26 15:30:05.494627"], ["updated_at", "2018-07-26 15:30:05.494627"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.8ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "silver"], ["created_at", "2018-07-26 15:30:05.511246"], ["updated_at", "2018-07-26 15:30:05.511246"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.8ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "black"], ["created_at", "2018-07-26 15:30:05.523410"], ["updated_at", "2018-07-26 15:30:05.523410"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (16.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.7ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "lavender"], ["created_at", "2018-07-26 15:30:05.546110"], ["updated_at", "2018-07-26 15:30:05.546110"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mPiece Create (1.1ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "Shadow"], ["created_at", "2018-07-26 15:31:33.714929"], ["updated_at", "2018-07-26 15:31:33.714929"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mPiece Create (0.9ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "Smudge"], ["created_at", "2018-07-26 15:31:33.732606"], ["updated_at", "2018-07-26 15:31:33.732606"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mPiece Create (0.9ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "Molly"], ["created_at", "2018-07-26 15:31:33.745942"], ["updated_at", "2018-07-26 15:31:33.745942"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mPiece Create (0.9ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "Angel"], ["created_at", "2018-07-26 15:31:33.758968"], ["updated_at", "2018-07-26 15:31:33.758968"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mPiece Create (0.8ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "Missy"], ["created_at", "2018-07-26 15:31:33.771562"], ["updated_at", "2018-07-26 15:31:33.771562"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (1.7ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Lily"], ["created_at", "2018-07-26 15:32:20.368284"], ["updated_at", "2018-07-26 15:32:20.368284"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (19.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Simba"], ["created_at", "2018-07-26 15:32:20.397749"], ["updated_at", "2018-07-26 15:32:20.397749"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (1.0ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Lucky"], ["created_at", "2018-07-26 15:32:20.416781"], ["updated_at", "2018-07-26 15:32:20.416781"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (13.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Max"], ["created_at", "2018-07-26 15:32:20.439907"], ["updated_at", "2018-07-26 15:32:20.439907"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (1.2ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Oscar"], ["created_at", "2018-07-26 15:32:20.457923"], ["updated_at", "2018-07-26 15:32:20.457923"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (1.2ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Missy"], ["created_at", "2018-07-26 15:43:17.543684"], ["updated_at", "2018-07-26 15:43:17.543684"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (1.0ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sam"], ["created_at", "2018-07-26 15:43:17.561685"], ["updated_at", "2018-07-26 15:43:17.561685"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Oliver"], ["created_at", "2018-07-26 15:43:17.574540"], ["updated_at", "2018-07-26 15:43:17.574540"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Oliver"], ["created_at", "2018-07-26 15:43:17.587233"], ["updated_at", "2018-07-26 15:43:17.587233"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Oliver"], ["created_at", "2018-07-26 15:43:17.600232"], ["updated_at", "2018-07-26 15:43:17.600232"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mPiece Load (0.7ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPiece Load (0.7ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mAssemblage Load (0.8ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPiece Load (0.5ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPiece Load (0.7ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPiece Load (0.5ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.6ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 1]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAssemblage::HABTM_Pieces Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 1], ["piece_id", 3]]
+  ↳ db/seeds.rb:20
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 2]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAssemblage::HABTM_Pieces Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 2], ["piece_id", 3]]
+  ↳ db/seeds.rb:20
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 3]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAssemblage::HABTM_Pieces Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 3], ["piece_id", 3]]
+  ↳ db/seeds.rb:20
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 4]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAssemblage::HABTM_Pieces Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 4], ["piece_id", 3]]
+  ↳ db/seeds.rb:20
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.5ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 5]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAssemblage::HABTM_Pieces Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 5], ["piece_id", 3]]
+  ↳ db/seeds.rb:20
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (2.1ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (0.2ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 6]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAssemblage::HABTM_Pieces Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 6], ["piece_id", 3]]
+  ↳ db/seeds.rb:20
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 7]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAssemblage::HABTM_Pieces Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 7], ["piece_id", 3]]
+  ↳ db/seeds.rb:20
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (2.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (0.2ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 8]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAssemblage::HABTM_Pieces Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 8], ["piece_id", 3]]
+  ↳ db/seeds.rb:20
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (0.2ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 9]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAssemblage::HABTM_Pieces Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 9], ["piece_id", 3]]
+  ↳ db/seeds.rb:20
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 10]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAssemblage::HABTM_Pieces Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 10], ["piece_id", 3]]
+  ↳ db/seeds.rb:20
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPiece Load (0.6ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (0.7ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPiece Load (0.6ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAssemblages (20180726145843)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "assemblages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180726145843_create_assemblages.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180726145843"]]
+  ↳ bin/rails:9
+  [1m[35m (12.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreatePieces (20180726150229)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "pieces" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "part_number" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180726150229_create_pieces.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180726150229"]]
+  ↳ bin/rails:9
+  [1m[35m (12.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateJoinTableAssemblagesPieces (20180726151838)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "assemblages_pieces" ("assemblage_id" integer NOT NULL, "piece_id" integer NOT NULL)[0m
+  ↳ db/migrate/20180726151838_create_join_table_assemblages_pieces.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_assemblages_pieces_on_assemblage_id_and_piece_id" ON "assemblages_pieces" ("assemblage_id", "piece_id")[0m
+  ↳ db/migrate/20180726151838_create_join_table_assemblages_pieces.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_assemblages_pieces_on_piece_id_and_assemblage_id" ON "assemblages_pieces" ("piece_id", "assemblage_id")[0m
+  ↳ db/migrate/20180726151838_create_join_table_assemblages_pieces.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180726151838"]]
+  ↳ bin/rails:9
+  [1m[35m (7.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-07-26 16:02:19.561802"], ["updated_at", "2018-07-26 16:02:19.561802"]]
+  ↳ bin/rails:9
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPiece Load (0.6ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (1.1ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "red"], ["created_at", "2018-07-26 16:03:04.852637"], ["updated_at", "2018-07-26 16:03:04.852637"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.8ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "violet"], ["created_at", "2018-07-26 16:03:04.869756"], ["updated_at", "2018-07-26 16:03:04.869756"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.9ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "gold"], ["created_at", "2018-07-26 16:03:04.882523"], ["updated_at", "2018-07-26 16:03:04.882523"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.9ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "green"], ["created_at", "2018-07-26 16:03:04.894416"], ["updated_at", "2018-07-26 16:03:04.894416"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.9ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "silver"], ["created_at", "2018-07-26 16:03:04.906725"], ["updated_at", "2018-07-26 16:03:04.906725"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.9ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "indigo"], ["created_at", "2018-07-26 16:03:04.919522"], ["updated_at", "2018-07-26 16:03:04.919522"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.9ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "gold"], ["created_at", "2018-07-26 16:03:04.933353"], ["updated_at", "2018-07-26 16:03:04.933353"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (0.9ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "mint green"], ["created_at", "2018-07-26 16:03:04.946351"], ["updated_at", "2018-07-26 16:03:04.946351"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (1.6ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "fuchsia"], ["created_at", "2018-07-26 16:03:04.958931"], ["updated_at", "2018-07-26 16:03:04.958931"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mPiece Create (1.0ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "teal"], ["created_at", "2018-07-26 16:03:04.975652"], ["updated_at", "2018-07-26 16:03:04.975652"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (14.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (3.8ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Smudge"], ["created_at", "2018-07-26 16:03:05.115223"], ["updated_at", "2018-07-26 16:03:05.115223"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (20.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (8.7ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (1.7ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Smudge"], ["created_at", "2018-07-26 16:03:05.158746"], ["updated_at", "2018-07-26 16:03:05.158746"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (9.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (3.5ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Bella"], ["created_at", "2018-07-26 16:03:05.183527"], ["updated_at", "2018-07-26 16:03:05.183527"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (1.1ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Angel"], ["created_at", "2018-07-26 16:03:05.207541"], ["updated_at", "2018-07-26 16:03:05.207541"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Felix"], ["created_at", "2018-07-26 16:03:05.222815"], ["updated_at", "2018-07-26 16:03:05.222815"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (3.2ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Daisy"], ["created_at", "2018-07-26 16:03:05.238578"], ["updated_at", "2018-07-26 16:03:05.238578"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (10.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (1.3ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Lucky"], ["created_at", "2018-07-26 16:03:05.286723"], ["updated_at", "2018-07-26 16:03:05.286723"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (3.0ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Oscar"], ["created_at", "2018-07-26 16:03:05.319785"], ["updated_at", "2018-07-26 16:03:05.319785"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (10.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (1.7ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Bella"], ["created_at", "2018-07-26 16:03:05.347066"], ["updated_at", "2018-07-26 16:03:05.347066"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (10.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mAssemblage Create (5.0ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Missy"], ["created_at", "2018-07-26 16:03:05.366011"], ["updated_at", "2018-07-26 16:03:05.366011"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mPiece Load (0.7ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mAssemblage Load (3.8ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mAssemblage Load (0.5ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.6ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 1]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (1.0ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 1], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 1], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (10.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 2], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 2], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 3]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 3], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 3], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 4], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 4], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 5]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 5], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 5], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 6]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 6], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.5ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 6], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (28.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.5ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 7]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 7], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.5ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 7], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 8]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (2.5ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 8], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 8], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (26.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 9]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (1.1ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 9], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.5ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 9], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (9.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 10]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 10], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 10], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAssemblages (20180726145843)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "assemblages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180726145843_create_assemblages.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180726145843"]]
+  ↳ bin/rails:9
+  [1m[35m (18.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreatePieces (20180726150229)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "pieces" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "part_number" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180726150229_create_pieces.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180726150229"]]
+  ↳ bin/rails:9
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateJoinTableAssemblagesPieces (20180726151838)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "assemblages_pieces" ("assemblage_id" integer NOT NULL, "piece_id" integer NOT NULL)[0m
+  ↳ db/migrate/20180726151838_create_join_table_assemblages_pieces.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_assemblages_pieces_on_assemblage_id_and_piece_id" ON "assemblages_pieces" ("assemblage_id", "piece_id")[0m
+  ↳ db/migrate/20180726151838_create_join_table_assemblages_pieces.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_assemblages_pieces_on_piece_id_and_assemblage_id" ON "assemblages_pieces" ("piece_id", "assemblage_id")[0m
+  ↳ db/migrate/20180726151838_create_join_table_assemblages_pieces.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180726151838"]]
+  ↳ bin/rails:9
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-07-26 16:11:48.172131"], ["updated_at", "2018-07-26 16:11:48.172131"]]
+  ↳ bin/rails:9
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[36mPiece Create (1.0ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "lavender"], ["created_at", "2018-07-26 16:12:06.089548"], ["updated_at", "2018-07-26 16:12:06.089548"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (9.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[36mPiece Create (0.8ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "turquoise"], ["created_at", "2018-07-26 16:12:06.106584"], ["updated_at", "2018-07-26 16:12:06.106584"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[36mPiece Create (0.7ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "salmon"], ["created_at", "2018-07-26 16:12:06.116961"], ["updated_at", "2018-07-26 16:12:06.116961"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[36mPiece Create (0.7ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "yellow"], ["created_at", "2018-07-26 16:12:06.128175"], ["updated_at", "2018-07-26 16:12:06.128175"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[36mPiece Create (0.7ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "ivory"], ["created_at", "2018-07-26 16:12:06.139688"], ["updated_at", "2018-07-26 16:12:06.139688"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[36mPiece Create (0.7ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "turquoise"], ["created_at", "2018-07-26 16:12:06.151375"], ["updated_at", "2018-07-26 16:12:06.151375"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[36mPiece Create (0.7ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "olive"], ["created_at", "2018-07-26 16:12:06.162976"], ["updated_at", "2018-07-26 16:12:06.162976"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[36mPiece Create (0.7ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "pink"], ["created_at", "2018-07-26 16:12:06.173673"], ["updated_at", "2018-07-26 16:12:06.173673"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[36mPiece Create (0.7ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "maroon"], ["created_at", "2018-07-26 16:12:06.184311"], ["updated_at", "2018-07-26 16:12:06.184311"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[36mPiece Create (1.5ms)[0m  [1m[32mINSERT INTO "pieces" ("part_number", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["part_number", "orchid"], ["created_at", "2018-07-26 16:12:06.196479"], ["updated_at", "2018-07-26 16:12:06.196479"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (16.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mAssemblage Create (1.3ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sooty"], ["created_at", "2018-07-26 16:12:06.251429"], ["updated_at", "2018-07-26 16:12:06.251429"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (14.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mAssemblage Create (1.0ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Angel"], ["created_at", "2018-07-26 16:12:06.272508"], ["updated_at", "2018-07-26 16:12:06.272508"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mAssemblage Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Felix"], ["created_at", "2018-07-26 16:12:06.286603"], ["updated_at", "2018-07-26 16:12:06.286603"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mAssemblage Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sooty"], ["created_at", "2018-07-26 16:12:06.297109"], ["updated_at", "2018-07-26 16:12:06.297109"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mAssemblage Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Lucky"], ["created_at", "2018-07-26 16:12:06.308296"], ["updated_at", "2018-07-26 16:12:06.308296"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mAssemblage Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Simba"], ["created_at", "2018-07-26 16:12:06.322711"], ["updated_at", "2018-07-26 16:12:06.322711"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mAssemblage Create (1.0ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Max"], ["created_at", "2018-07-26 16:12:06.348763"], ["updated_at", "2018-07-26 16:12:06.348763"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mAssemblage Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Missy"], ["created_at", "2018-07-26 16:12:06.362858"], ["updated_at", "2018-07-26 16:12:06.362858"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mAssemblage Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Lucky"], ["created_at", "2018-07-26 16:12:06.376417"], ["updated_at", "2018-07-26 16:12:06.376417"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mAssemblage Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Jasper"], ["created_at", "2018-07-26 16:12:06.387553"], ["updated_at", "2018-07-26 16:12:06.387553"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mAssemblage Load (0.6ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.6ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.6ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.5ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.6ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 1]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (1.1ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 1], ["piece_id", 9]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 1], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[35m (11.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 2], ["piece_id", 5]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.6ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 2], ["piece_id", 9]]
+  ↳ db/seeds.rb:17
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 3]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 3], ["piece_id", 8]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.3ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 3], ["piece_id", 8]]
+  ↳ db/seeds.rb:17
+  [1m[35m (10.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (2.7ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 4], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 4], ["piece_id", 3]]
+  ↳ db/seeds.rb:17
+  [1m[35m (11.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.6ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 5]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (2.9ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 5], ["piece_id", 3]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 5], ["piece_id", 2]]
+  ↳ db/seeds.rb:17
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 6]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 6], ["piece_id", 8]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.3ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 6], ["piece_id", 5]]
+  ↳ db/seeds.rb:17
+  [1m[35m (9.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 7]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 7], ["piece_id", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.6ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 7], ["piece_id", 6]]
+  ↳ db/seeds.rb:17
+  [1m[35m (13.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.3ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 8]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 8], ["piece_id", 5]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 8], ["piece_id", 6]]
+  ↳ db/seeds.rb:17
+  [1m[35m (16.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 9]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (1.0ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 9], ["piece_id", 8]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.3ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 9], ["piece_id", 7]]
+  ↳ db/seeds.rb:17
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage Load (0.4ms)[0m  [1m[34mSELECT  "assemblages".* FROM "assemblages" WHERE "assemblages"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (3.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.4ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" ORDER BY "pieces"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.2ms)[0m  [1m[34mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mPiece Load (0.3ms)[0m  [1m[34mSELECT "pieces".* FROM "pieces" INNER JOIN "assemblages_pieces" ON "pieces"."id" = "assemblages_pieces"."piece_id" WHERE "assemblages_pieces"."assemblage_id" = ?[0m  [["assemblage_id", 10]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (2.3ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 10], ["piece_id", 5]]
+  ↳ db/seeds.rb:17
+  [1m[36mAssemblage::HABTM_Pieces Create (0.4ms)[0m  [1m[32mINSERT INTO "assemblages_pieces" ("assemblage_id", "piece_id") VALUES (?, ?)[0m  [["assemblage_id", 10], ["piece_id", 4]]
+  ↳ db/seeds.rb:17
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
